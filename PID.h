@@ -15,6 +15,8 @@ public:
 
     // Constructor 
     PID();
+
+    // Destructor 
     ~PID();
 
     double computeForce( ); 

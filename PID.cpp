@@ -1,5 +1,7 @@
 #include "PID.h"
 
+// Initialize the constrcutor 
+
 PID::PID()
 {
     Kd      =   0.0; 
@@ -13,6 +15,12 @@ PID::~PID()
 {
 }
 
+/**
+ * @brief compute the PID control 
+ * 
+ * 
+ * @return double 
+ */
 double PID::computeForce()
 {
     double error = desX - state; 
@@ -27,6 +35,8 @@ double PID::computeForce()
 
     sum_err += error; 
 
+
+    // check if the sum is higher that 0.5 
     if (sum_err > 0.5)
     {
         sum_err = 0.0; 
@@ -35,6 +45,13 @@ double PID::computeForce()
     return computeForce_; 
 }
 
+/**
+ * @brief 
+ * 
+ * @param Kp_ proportional gain 
+ * @param Kd_ derivative gain 
+ * @param Ki_ integral gain
+ */
 void PID::setGains(double Kp_, double Kd_, double Ki_)
 {
     Kp = Kp_; 
@@ -42,17 +59,32 @@ void PID::setGains(double Kp_, double Kd_, double Ki_)
     Ki = Ki_; 
 }
 
+/**
+ * @brief 
+ * 
+ * @param x_ set the state
+ */
 void PID::setState(double x_)
 {
     state = x_; 
 
 }
 
+/**
+ * @brief set the desX state
+ * 
+ * @param desx_ 
+ */
 void PID::setdesX(double desx_)
 {
     desX = desx_; 
 }
 
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int main()
 {
     PID pid; 
@@ -69,10 +101,9 @@ int main()
     pid.setState(X_); 
     pid.setdesX(desX__); 
     
+    double output =  pid.computeForce(); 
 
-   double output =  pid.computeForce(); 
-
-   std::cout << "pid out "<< output << std::endl; 
+    std::cout << "pid out "<< output << std::endl; 
 
     return 0; 
 }
