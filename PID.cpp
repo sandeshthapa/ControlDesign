@@ -89,9 +89,9 @@ int main()
 {
     PID pid; 
 
-    double Ki_g = 0.0; 
-    double Kp_g = 1.0; 
-    double Kd_g = 0.01; 
+    double Ki_g = 0.01; 
+    double Kp_g = 2.0; 
+    double Kd_g = 0.1; 
 
     pid.setGains(Kp_g, Kd_g, Ki_g); 
 
