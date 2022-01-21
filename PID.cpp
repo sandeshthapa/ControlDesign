@@ -95,15 +95,28 @@ int main()
 
     pid.setGains(Kp_g, Kd_g, Ki_g); 
 
-    double X_ = 1.0;
-    double desX__ = 0.5; 
- 
-    pid.setState(X_); 
-    pid.setdesX(desX__); 
+    std::vector<double> curr_state;
+    curr_state.push_back(0); 
+    curr_state.push_back(1); 
+    curr_state.push_back(4); 
+    curr_state.push_back(10); 
+    curr_state.push_back(50); 
+
+    for (int i = 0; i < curr_state.size(); i++)
+    {  
+        double X_ =  curr_state[i];
+
+        double desX_  = 2.0;
+        pid.setState(X_); 
+        pid.setdesX(desX_); 
+
+        double output =  pid.computeForce(); 
+
+        std::cout << "Desired force from pid control = "<< output << std::endl; 
+
+    }
     
-    double output =  pid.computeForce(); 
-
-    std::cout << "pid out "<< output << std::endl; 
-
+ 
+   
     return 0; 
 }
