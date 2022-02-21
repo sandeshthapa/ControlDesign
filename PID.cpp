@@ -1,6 +1,6 @@
 #include "PID.h"
 
-// Initialize the constrcutor 
+// Initialize the constructor
 
 PID::PID()
 {
@@ -23,9 +23,7 @@ PID::~PID()
  */
 double PID::computeForce()
 {
-    double error = desX - state; 
-    double prev_err = 0.0 ; 
-    double sum_err = 0.0 ; 
+    error = desX - state; 
 
     double computeForce_ ; 
     
@@ -52,7 +50,7 @@ double PID::computeForce()
  * @param Kd_ derivative gain 
  * @param Ki_ integral gain
  */
-void PID::setGains(double Kp_, double Kd_, double Ki_)
+void PID::setGains(double& Kp_, double& Kd_, double& Ki_)
 {
     Kp = Kp_; 
     Kd = Kd_; 

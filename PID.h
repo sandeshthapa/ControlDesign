@@ -10,6 +10,9 @@ private:
     double Ki;
     double state;
     double desX; 
+    double error; //= desX - state; 
+    double prev_err; // = 0.0 ; 
+    double sum_err; //= 0.0 ; 
     
 public:
     
@@ -23,7 +26,7 @@ public:
 
 
     double computeForce( ); 
-    void setGains(double Kp_, double Kd_, double Ki_); 
+    void setGains(double& Kp_, double& Kd_, double& Ki_); 
     void setState(double x_); 
     void setdesX(double desx_); 
 
